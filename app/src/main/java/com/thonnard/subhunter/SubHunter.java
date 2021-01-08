@@ -16,6 +16,21 @@ import java.util.Random;
 
 public class SubHunter extends AppCompatActivity {
 
+    // These variables can be "seen" throughout the SubHunter class
+    int numberHorizontalPixels;
+    int numberVerticalPixels;
+    int blockSize;
+    int gridWidth = 40;
+    int gridHeight;
+    float horizontalTouched = -100;
+    float verticalTouched = -100;
+    int subHorizontalPosition;
+    int subVerticalPosition;
+    boolean hit = false;
+    int shotsTaken;
+    int distanceFromSub;
+    boolean debugging = true;
+
      /*
     Android runs this code just before
     the player sees the app.
@@ -27,6 +42,18 @@ public class SubHunter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Get the current device's screen resolution
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        // Initialize our size based variables
+        // based on the screen resolution
+        numberHorizontalPixels = size.x;
+        numberVerticalPixels = size.y;
+        blockSize = numberHorizontalPixels / gridWidth;
+        gridHeight = numberVerticalPixels / blockSize;
 
         Log.d("Debugging", "In onCreate");
         newGame();
@@ -52,7 +79,10 @@ public class SubHunter extends AppCompatActivity {
 
     void draw(){
         Log.d("Debugging", "In draw");
+
+        printDebuggingText();
     }
+
 
     /*
     This part of the code will
