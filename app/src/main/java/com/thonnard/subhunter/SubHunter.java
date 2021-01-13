@@ -68,6 +68,11 @@ public class SubHunter extends AppCompatActivity {
     */
 
     void newGame(){
+        Random random = new Random();
+        subHorizontalPosition = random.nextInt(gridWidth);
+        subVerticalPosition = random.nextInt(gridHeight);
+        shotsTaken = 0;
+
         Log.d("Debuggin", "In newGame");
     }
 
@@ -119,7 +124,26 @@ public class SubHunter extends AppCompatActivity {
 
     // This code prints the debugging text
 
-    void printDebuggingText(){
-
+    public void printDebuggingText(){
+        Log.d("numberHorizontalPixels",
+                "" + numberHorizontalPixels);
+        Log.d("numberVerticalPixels",
+                "" + numberVerticalPixels);
+        Log.d("blockSize", "" + blockSize);
+        Log.d("gridWidth", "" + gridWidth);
+        Log.d("gridHeight", "" + gridHeight);
+        Log.d("horizontalTouched",
+                "" + horizontalTouched);
+        Log.d("verticalTouched",
+                "" + verticalTouched);
+        Log.d("subHorizontalPosition",
+                "" + subHorizontalPosition);
+        Log.d("subVerticalPosition",
+                "" + subVerticalPosition);
+        Log.d("hit", "" + hit);
+        Log.d("shotsTaken", "" + shotsTaken);
+        Log.d("debugging", "" + debugging);
+        Log.d("distanceFromSub",
+                "" + distanceFromSub);
     }
 }
